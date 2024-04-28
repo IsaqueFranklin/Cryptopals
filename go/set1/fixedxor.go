@@ -10,11 +10,12 @@ func main() {
  
   //Comentário futuro: o "_" usado como parâmetro duplo nas funções está sendo usado para ignorar o retorno de err que essas funções deveriam retornar. => Lembrar disso em outros projetos, conhecimento útil.
 
-  input1, _ := decodeHex([]byte(""))
+  input1, _ := decodeHex([]byte("1c0111001f010100061a024b53535009181c"))
 
-  input2, _ := decodeHex([]byte(""))
+  input2, _ := decodeHex([]byte("686974207468652062756c6c277320657965"))
 
   decoded, _ := xorIt(input1, input2)
+  fmt.Printf("%s", encodeHex(decoded))
 }
 
 func decodeHex(input []byte) ([]byte, error) {
@@ -29,10 +30,16 @@ func decodeHex(input []byte) ([]byte, error) {
   return db, nil
 }
 
+func encodeHex(input []byte) []byte {
+  result := make([]byte, hex.EncodedLen(len(input)))
+  hex.Encode(result, input)
+  return result
+}
+
 func xorIt(input1, input2 []byte) ([]byte, error) {
 
   //Checking if the inputs are equal
-  if input2 != input2 { 
+  if len(input2) != len(input2) { 
     return nil, errors.New("The inputs have different lengths, impossible to apply XOR.")
   }
 
@@ -43,4 +50,6 @@ func xorIt(input1, input2 []byte) ([]byte, error) {
   for i := 0; i < len(input2); i++ {
     result[i] = input1[i] ^ input2[i]
   }
+
+  return result, nil
 }
