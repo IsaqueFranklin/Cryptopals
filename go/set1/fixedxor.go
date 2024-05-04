@@ -8,7 +8,7 @@ import (
 
 func main() {
  
-  //Comentário futuro: o "_" usado como parâmetro duplo nas funções está sendo usado para ignorar o retorno de err que essas funções deveriam retornar. => Lembrar disso em outros projetos, conhecimento útil.
+  //Comentário futuro: o "_" usado como parâmetro duplo nas funções está sendo usado para ignorar o retorno de err que essas funções deveriam retornar. => Lembrar disso em outros projetos, conhecimento útil. Go é lindo.
 
   input1, _ := decodeHex([]byte("1c0111001f010100061a024b53535009181c"))
 
